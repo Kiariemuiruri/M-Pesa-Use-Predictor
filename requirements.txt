@@ -1,0 +1,9 @@
+fastapi
+pandas
+numpy
+sklearn
+xgboost
+uvicorn
+dill
+ipykernel
+setuptools
