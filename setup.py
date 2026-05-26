@@ -15,7 +15,7 @@ def get_requirements(file_path:str) -> List[str]:
     return requirements
 
 setup(
-    name='Mpesa Advisor',
+    name='MpesaAdvisor',
     version='0.0.1',
     author='Kiarie',
     author_email='geofreykiarie04@gmail.com',

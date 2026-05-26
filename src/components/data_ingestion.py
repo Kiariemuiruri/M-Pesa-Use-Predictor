@@ -15,7 +15,7 @@ from src.pipeline.feature_engineering import FeatureEngineering
 @dataclass
 class DataIngestionConfig:
     raw_data_path = os.path.join('notebook', 'sms-20260520144009.xml')
-    parsed_data_path = os.path.join('artifacts', 'data.csv')
+    parsed_data_path = os.path.join('artifacts', 'raw.parquet')
 
 class DataIngestion:
     def __init__(self):
@@ -47,7 +47,7 @@ class DataIngestion:
             logging.info('Data parsing successful')
 
             os.makedirs(os.path.dirname(self.ingestion_config.parsed_data_path), exist_ok=True)
-            df.to_csv(self.ingestion_config.parsed_data_path, index=False, header=True)
+            df.to_parquet(self.ingestion_config.parsed_data_path, index=False, engine='pyarrow')
             
             logging.info('Data Ingestion complete!')
 

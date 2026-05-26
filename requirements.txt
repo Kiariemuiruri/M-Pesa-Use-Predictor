@@ -1,9 +1,11 @@
 fastapi
 pandas
 numpy
-sklearn
+scikit-learn
 xgboost
 uvicorn
 dill
 ipykernel
 setuptools
+pyarrow
+#-e .

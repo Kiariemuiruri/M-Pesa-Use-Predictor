@@ -2,6 +2,7 @@ import sys
 import os
 import pandas as pd
 import re 
+import pyarrow
 from dataclasses import dataclass
 
 from src.logger import logging
@@ -10,7 +11,7 @@ from src.exception import CustomException
 
 @dataclass
 class DataParsingConfig:
-    data_path = os.path.join('artifacts', 'data.csv')
+    data_path = os.path.join('artifacts', 'parsed.parquet')
 
 
 
@@ -180,13 +181,13 @@ class DataParsing:
         logging.info('Entered data transformation object')
 
         try:
-            data = pd.read_csv(data_path)
+            data = pd.read_parquet(data_path, engine='pyarrow')
             extracted = data['body'].apply(self.extract)
             df = data.join(pd.DataFrame(extracted.tolist()))
             df = df.dropna(subset=['txn_type'])
             #print(f"time {df['timestamp'].dtype}")
             os.makedirs(os.path.dirname(self.transformation_config.data_path), exist_ok=True)
-            df.to_csv(self.transformation_config.data_path, header=True)
+            df.to_parquet(self.transformation_config.data_path, index=False, engine='pyarrow')
 
             print(f" ✔️  Extracted {len(df)} transactions")  
             print(df['txn_type'].value_counts())

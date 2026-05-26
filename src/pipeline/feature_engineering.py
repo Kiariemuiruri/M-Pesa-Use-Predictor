@@ -22,8 +22,8 @@ class FeatureEngineering:
         logging.info('Data pivoting started')
 
         try:
-            df = pd.read_csv(df_path)
-            df['timestamp'] = pd.to_datetime(df['timestamp'])
+            df = pd.read_parquet(df_path)
+            #df['timestamp'] = pd.to_datetime(df['timestamp'])
             print(df['timestamp'].dtype)
             outflows = df[df['txn_type'].isin(['sent', 'paybill', 'till', 'pochi', 'airtime',
                                             'withdrawal'])].copy()
