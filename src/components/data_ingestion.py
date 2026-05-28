@@ -9,6 +9,7 @@ from src.logger import logging
 from src.exception import CustomException
 from data_parsing import DataParsing
 from src.pipeline.feature_engineering import FeatureEngineering
+from src.pipeline.model_trainer import ModelTrainer
 
 
 # data is in an xml file, we parse with xml parser
@@ -66,3 +67,7 @@ if __name__ == '__main__':
 
     engineer_obj = FeatureEngineering()
     engineer_obj.initiate_feature_engineering(df_path=df_path)
+
+    model_obj = ModelTrainer()
+    model_obj.initiate_model_trainer()
+

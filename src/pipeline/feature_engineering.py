@@ -22,7 +22,7 @@ class FeatureEngineering:
         logging.info('Data pivoting started')
 
         try:
-            df = pd.read_parquet(df_path)
+            df = pd.read_parquet(df_path, engine='pyarrow')
             #df['timestamp'] = pd.to_datetime(df['timestamp'])
             print(df['timestamp'].dtype)
             outflows = df[df['txn_type'].isin(['sent', 'paybill', 'till', 'pochi', 'airtime',
@@ -63,6 +63,7 @@ class FeatureEngineering:
             target_dfs = {}
 
             spending_df = self.prepare_data(df_path=df_path)
+            # print(spending_df.columns)
             targets = ['money_sent', 'paybill_payment', 'till_payment', 
                     'pochi_payment', 'airtime', 'withdrawal']
             
@@ -72,7 +73,7 @@ class FeatureEngineering:
                     continue
 
                 # build target df
-                target_df = spending_df[['timestamp', target]]
+                target_df = spending_df[['timestamp', target]].copy()
 
                 # sort by time
                 target_df = target_df.sort_values('timestamp').reset_index(drop=True)
@@ -87,8 +88,8 @@ class FeatureEngineering:
                 target_df['rolling_std_3']  = (target_df[target].rolling(3).std())
 
                 # calendar info
-                target_df['year'] = target_df['timestamp'].dt.year  # helps with trend
-                target_df['month'] = target_df['timestamp'].dt.month
+                target_df['year']      = target_df['timestamp'].dt.year  # helps with trend
+                target_df['month']     = target_df['timestamp'].dt.month
                 target_df['dayofweek'] = target_df['timestamp'].dt.dayofweek
                 target_df['hour']      = target_df['timestamp'].dt.hour
 
@@ -96,12 +97,9 @@ class FeatureEngineering:
                 target_df = target_df.dropna().reset_index(drop=True)
 
                 target_dfs[target] = target_df
-
-                os.makedirs(os.path.dirname(self.engineering_config.engineered_path), exist_ok=True)
-                #target_dfs.to_csv(self.engineering_config.engineered_path, header=True)
-
                 logging.info('Feature engineerig complete')
-                return target_dfs
+                
+            return target_dfs
 
         except Exception as e:
             raise CustomException(e,sys)
