@@ -22,7 +22,7 @@ class DataParsing:
 
     
     def is_business(self, name:str) -> bool:
-        logging.info('Match heuristic business names to paybill payments')
+        #logging.info('Match heuristic business names to paybill payments')
 
         # Simple heuristic: business names contain these patterns
         business_indicators = [
@@ -46,7 +46,7 @@ class DataParsing:
     
     def extract(self, body) -> dict:
                 
-        logging.info('Started Regular Expression mapping')
+        #logging.info('Started Regular Expression mapping')
         try:
 
             # regular expression to parse the data
@@ -171,7 +171,7 @@ class DataParsing:
 
                 break # stop at first match
             
-            logging.info('Data transformation complete')
+            #logging.info('Data transformation complete')
             return result
         
         except Exception as e:

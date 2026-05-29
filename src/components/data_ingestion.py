@@ -10,6 +10,7 @@ from src.exception import CustomException
 from data_parsing import DataParsing
 from src.pipeline.feature_engineering import FeatureEngineering
 from src.pipeline.model_trainer import ModelTrainer
+from src.reports.predict import TransactionsReport
 
 
 # data is in an xml file, we parse with xml parser
@@ -65,9 +66,11 @@ if __name__ == '__main__':
     transform_obj = DataParsing()
     df_path = transform_obj.initiate_data_parsing(data_path=data_path)
 
-    engineer_obj = FeatureEngineering()
-    engineer_obj.initiate_feature_engineering(df_path=df_path)
+    report_obj = TransactionsReport()
+    report_obj.generate_report(df_path)
+   # engineer_obj = FeatureEngineering()
+   # engineer_obj.initiate_feature_engineering(df_path=df_path)
 
-    model_obj = ModelTrainer()
-    model_obj.initiate_model_trainer()
+   # model_obj = ModelTrainer()
+   # model_obj.initiate_model_trainer()
 
