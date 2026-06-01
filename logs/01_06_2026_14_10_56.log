@@ -1,0 +1,16 @@
+[2026-06-01 14:10:59,598] 28 root - INFO - Entered data ingestion method
+[2026-06-01 14:10:59,884] 50 root - INFO - Data parsing successful
+[2026-06-01 14:10:59,970] 55 root - INFO - Data Ingestion complete!
+[2026-06-01 14:10:59,976] 181 root - INFO - Entered data transformation object
+[2026-06-01 14:11:00,515] 194 root - INFO - Data parsing complete
+[2026-06-01 14:11:00,516] 134 root - INFO - Entered prediction method
+[2026-06-01 14:11:00,517] 60 root - INFO - Entered feature engineering object
+[2026-06-01 14:11:00,517] 22 root - INFO - Data pivoting started
+[2026-06-01 14:11:00,664] 52 root - INFO - Data pivoting complete
+[2026-06-01 14:11:00,684] 100 root - INFO - Feature engineerig complete
+[2026-06-01 14:11:00,705] 100 root - INFO - Feature engineerig complete
+[2026-06-01 14:11:00,729] 100 root - INFO - Feature engineerig complete
+[2026-06-01 14:11:00,745] 100 root - INFO - Feature engineerig complete
+[2026-06-01 14:11:00,761] 100 root - INFO - Feature engineerig complete
+[2026-06-01 14:11:00,778] 100 root - INFO - Feature engineerig complete
+[2026-06-01 14:11:00,790] 11 root - INFO - Error capture successful!

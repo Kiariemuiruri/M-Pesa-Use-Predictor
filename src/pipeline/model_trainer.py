@@ -15,7 +15,7 @@ from src.utils import save_object
 
 @dataclass 
 class ModelTrainerConfig:
-    model_path = os.path.join('artifacts', 'model.pkl')
+    model_path = os.path.join('models', 'model.pkl')
     engineered_features = os.path.join('artifacts', 'parsed.parquet')
 
 
@@ -29,58 +29,59 @@ class ModelTrainer:
         logging.info('Entered model training object')
 
         try:
-            model = XGBRegressor(
-            n_estimators=150,
-            max_depth=3,       # prevent overfitting on small data
-            max_leaves=3,
-            #min_samples_leaf=4,
-            learning_rate=0.4,
-            random_state=42
-            )
-
-            targets = ['money_sent', 'paybill_payment', 'till_payment', 
+            targets = ['money_sent', 'paybill_payment', 'till_payment',
                     'pochi_payment', 'airtime', 'withdrawal']
+
+            target_dfs = self.feature_engineering.initiate_feature_engineering(
+                df_path=self.trainer_config.engineered_features)
             
-            
-            target_dfs = self.feature_engineering.initiate_feature_engineering(df_path=self.trainer_config.engineered_features)
-            # print(target_dfs['airtime'].head(3))
+
+            model_paths = {}  # store one path per target
+
             for target in targets:
                 target_df = target_dfs[target]
+                n         = len(target_df)
 
-                n = len(target_df)
+                # ── model per target ────────────────────────
+                # ✅ Now: new instance every iteration
+                model = XGBRegressor(
+                    n_estimators=150,
+                    max_depth=3,
+                    max_leaves=3,
+                    learning_rate=0.4,
+                    random_state=42
+                )
 
-                
-                # ── Features:
-                features = target_df[['lag1', 'lag2','lag3','rolling_mean_3','rolling_std_3','year','month',
-                                'dayofweek', 'hour']].values
-                
+                features = target_df[['lag1', 'lag2', 'lag3','rolling_mean_3', 'rolling_std_3',
+                                        'year', 'month', 'dayofweek', 'hour']].values
+                    
+    
                 model_target = target_df[target].values
 
-                # ── 80/20 split — ensure at least 1 row in test ──
-                train_len = min(max(int(n * 0.8), 1), n - 1)
-
+                train_len       = min(max(int(n * 0.8), 1), n - 1)
                 X_train, X_test = features[:train_len], features[train_len:]
                 y_train, y_test = model_target[:train_len], model_target[train_len:]
 
-                # model train
                 model.fit(X_train, y_train)
 
-                # evaluate
                 y_pred       = model.predict(X_test)
                 y_train_pred = model.predict(X_train)
                 test_score   = r2_score(y_test, y_pred)
-                train_score = r2_score(y_train, y_train_pred)
-                
-                print("{} train_score: {:.3f}".format(target, train_score))
-                print("{} test score: {:.3f}".format(target, test_score))
-                
-                save_object(
-                    file_path = self.trainer_config.model_path,
-                    obj = model
-                )
+                train_score  = r2_score(y_train, y_train_pred)
 
-                logging.info('Model trained and saved successfully')
-                 
+                print(f"{target} — train: {train_score:.3f}  test: {test_score:.3f}")
+                print(f"  y_test:  {y_test}")
+                print(f"  y_pred:  {y_pred.round(2)}")
+
+                # ── Save one model file per target ────────────────
+                target_model_path = self.trainer_config.model_path.replace('.pkl', f'_{target}.pkl')
+                    
+                save_object(file_path=target_model_path, obj=model)
+                model_paths[target] = target_model_path
+
+                logging.info(f'Model saved → {target_model_path}')
+
+            return model_paths  # return dict of paths, not just one path
             
         except Exception as e:
             raise CustomException(e, sys)

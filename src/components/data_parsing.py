@@ -190,7 +190,7 @@ class DataParsing:
             df.to_parquet(self.transformation_config.data_path, index=False, engine='pyarrow')
 
             print(f" ✔️  Extracted {len(df)} transactions")  
-            print(df['txn_type'].value_counts())
+            #print(df['txn_type'].value_counts())
             logging.info('Data parsing complete')
 
             return self.transformation_config.data_path   

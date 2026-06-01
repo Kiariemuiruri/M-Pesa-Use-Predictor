@@ -1,0 +1,32 @@
+[2026-06-01 12:18:33,763] 28 root - INFO - Entered data ingestion method
+[2026-06-01 12:18:34,096] 50 root - INFO - Data parsing successful
+[2026-06-01 12:18:34,201] 55 root - INFO - Data Ingestion complete!
+[2026-06-01 12:18:34,208] 181 root - INFO - Entered data transformation object
+[2026-06-01 12:18:34,717] 194 root - INFO - Data parsing complete
+[2026-06-01 12:18:34,719] 29 root - INFO - Entered model training object
+[2026-06-01 12:18:34,719] 60 root - INFO - Entered feature engineering object
+[2026-06-01 12:18:34,719] 22 root - INFO - Data pivoting started
+[2026-06-01 12:18:34,839] 52 root - INFO - Data pivoting complete
+[2026-06-01 12:18:34,854] 100 root - INFO - Feature engineerig complete
+[2026-06-01 12:18:34,867] 100 root - INFO - Feature engineerig complete
+[2026-06-01 12:18:34,883] 100 root - INFO - Feature engineerig complete
+[2026-06-01 12:18:34,898] 100 root - INFO - Feature engineerig complete
+[2026-06-01 12:18:34,913] 100 root - INFO - Feature engineerig complete
+[2026-06-01 12:18:34,927] 100 root - INFO - Feature engineerig complete
+[2026-06-01 12:18:35,020] 82 root - INFO - Model trained and saved successfully
+[2026-06-01 12:18:35,116] 82 root - INFO - Model trained and saved successfully
+[2026-06-01 12:18:35,199] 82 root - INFO - Model trained and saved successfully
+[2026-06-01 12:18:35,282] 82 root - INFO - Model trained and saved successfully
+[2026-06-01 12:18:35,399] 82 root - INFO - Model trained and saved successfully
+[2026-06-01 12:18:35,492] 82 root - INFO - Model trained and saved successfully
+[2026-06-01 12:18:35,494] 134 root - INFO - Entered prediction method
+[2026-06-01 12:18:35,494] 60 root - INFO - Entered feature engineering object
+[2026-06-01 12:18:35,494] 22 root - INFO - Data pivoting started
+[2026-06-01 12:18:35,532] 52 root - INFO - Data pivoting complete
+[2026-06-01 12:18:35,550] 100 root - INFO - Feature engineerig complete
+[2026-06-01 12:18:35,570] 100 root - INFO - Feature engineerig complete
+[2026-06-01 12:18:35,590] 100 root - INFO - Feature engineerig complete
+[2026-06-01 12:18:35,607] 100 root - INFO - Feature engineerig complete
+[2026-06-01 12:18:35,621] 100 root - INFO - Feature engineerig complete
+[2026-06-01 12:18:35,636] 100 root - INFO - Feature engineerig complete
+[2026-06-01 12:18:35,679] 167 root - INFO - Predictions complete

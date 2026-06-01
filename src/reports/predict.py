@@ -1,9 +1,12 @@
 import os
 import sys
 import pandas as pd
+import numpy as np
+import joblib
 from dataclasses import dataclass
 from src.logger import logging
 from src.exception import CustomException
+from src.pipeline.feature_engineering import FeatureEngineering
 
 
 @dataclass
@@ -60,32 +63,32 @@ class TransactionsReport:
             return {
                 "received":{
                     'total'       :      TransactionsReport._fmt(received['amount'].sum()),
-                    'transactions':      len(received),
+                    'times'       :      len(received),
                     'larget'      :     TransactionsReport._fmt(received['amount'].max()) if not received.empty else 0,
                 },
                 'sent':{
                     'total'       :      TransactionsReport._fmt(sent['amount'].sum()),
-                    'transactions':      len(sent),
+                    'times'       :      len(sent),
                     'largest'     :    TransactionsReport._fmt(sent['amount'].max()) if not sent.empty else 0,
                 },
                 "paybill":{
                     'total'       :      TransactionsReport._fmt(paybill['amount'].sum()),
-                    'transactions':      len(paybill),
+                    'times'       :      len(paybill),
                     'larget'      :     TransactionsReport._fmt(paybill['amount'].max()) if not paybill.empty else 0,
                 },
                 "till":{
                     'total'       :      TransactionsReport._fmt(till['amount'].sum()),
-                    'transactions':      len(till),
+                    'times'       :      len(till),
                     'larget'      :     TransactionsReport._fmt(till['amount'].max()) if not till.empty else 0,
                 },
                 "pochi":{
                     'total'       :      TransactionsReport._fmt(pochi['amount'].sum()),
-                    'transactions':      len(pochi),
+                    'times'       :      len(pochi),
                     'larget'      :     TransactionsReport._fmt(pochi['amount'].max()) if not pochi.empty else 0,
                 },
                 "airtime":{
                     'total'       :      TransactionsReport._fmt(airtime['amount'].sum()),
-                    'transactions':      len(airtime),
+                    'times'       :      len(airtime),
                     'larget'      :     TransactionsReport._fmt(airtime['amount'].max()) if not airtime.empty else 0,
                 },
                 'fuliza':{
@@ -114,10 +117,59 @@ class TransactionsReport:
     
     def _fmt(v): return f"Ksh {v:,.2f}"
 
-    def transaction_times(self, data_path):
-        transactions_df = pd.read_parquet(data_path)
-        transactions_times = []
-        transactions_times = transactions_df['txn_type'].value_counts()
-        logging.info('number of transactions successful')
+    def generate_transaction_times(self, data_path):
+        try:
+            transactions_df = pd.read_parquet(data_path)
+            transactions_times = {}
+            transactions_times = transactions_df['txn_type'].value_counts()
+            logging.info('number of transactions successful')
 
-        return transactions_times
+            return transactions_times
+        
+        except Exception as e:
+            raise CustomException(e, sys)
+        
+
+    def predict_next_month(self, data_path, model_paths: dict):
+        try:
+            feature_engineering = FeatureEngineering()
+            dfs = feature_engineering.initiate_feature_engineering(data_path)
+
+            predictions = {}
+            total       = 0
+            targets     = ['money_sent', 'paybill_payment', 'till_payment',
+                        'pochi_payment', 'airtime', 'withdrawal']
+
+            for target in targets:
+                target_df  = dfs[target]
+                last_row   = target_df.iloc[-1]
+                last_time  = target_df['timestamp'].iloc[-1]
+                next_month = last_time + pd.DateOffset(months=1)
+
+                next_features = np.array([[
+                    last_row['lag1'],
+                    last_row['lag2'],
+                    last_row['lag3'],
+                    last_row['rolling_mean_3'],
+                    last_row['rolling_std_3'],
+                    next_month.year,
+                    next_month.month,
+                    next_month.dayofweek,
+                    next_month.hour,
+                ]])
+
+                # ── Load the correct model for this target ────────────
+                model     = joblib.load(model_paths[target])
+                next_pred = max(model.predict(next_features)[0], 0)
+
+                print(f"{target:<20} Ksh {next_pred:>10,.2f}")
+
+                total += next_pred
+                predictions[target] = round(next_pred, 2)
+                predictions['total'] = round(total, 2)
+            logging.info('Predictions complete')
+
+            return predictions
+        
+        except Exception as e:
+            raise CustomException(e, sys)

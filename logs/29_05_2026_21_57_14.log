@@ -1,0 +1,7 @@
+[2026-05-29 21:57:18,100] 28 root - INFO - Entered data ingestion method
+[2026-05-29 21:57:18,408] 50 root - INFO - Data parsing successful
+[2026-05-29 21:57:18,489] 55 root - INFO - Data Ingestion complete!
+[2026-05-29 21:57:18,495] 181 root - INFO - Entered data transformation object
+[2026-05-29 21:57:18,997] 194 root - INFO - Data parsing complete
+[2026-05-29 21:57:18,998] 21 root - INFO - Initiated report generation
+[2026-05-29 21:57:19,046] 58 root - INFO - Report successfully generated
