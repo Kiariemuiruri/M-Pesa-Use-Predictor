@@ -23,8 +23,7 @@ class FeatureEngineering:
 
         try:
             df = pd.read_parquet(df_path, engine='pyarrow')
-            #df['timestamp'] = pd.to_datetime(df['timestamp'])
-            print(df['timestamp'].dtype)
+            
             outflows = df[df['txn_type'].isin(['sent', 'paybill', 'till', 'pochi', 'airtime',
                                             'withdrawal'])].copy()
             

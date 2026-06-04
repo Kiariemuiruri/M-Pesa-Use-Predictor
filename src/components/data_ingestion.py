@@ -8,7 +8,7 @@ from datetime import datetime
 from dataclasses import dataclass
 from src.logger import logging
 from src.exception import CustomException
-from data_parsing import DataParsing
+from src.components.data_parsing import DataParsing
 from src.pipeline.feature_engineering import FeatureEngineering
 from src.pipeline.model_trainer import ModelTrainer
 from src.reports.predict import TransactionsReport
@@ -17,7 +17,7 @@ from src.reports.predict import TransactionsReport
 # data is in an xml file, we parse with xml parser
 @dataclass
 class DataIngestionConfig:
-    raw_data_path = os.path.join('notebook', 'sms-20260520144009.xml')
+    raw_data_path = os.path.join('notebook', 'sms-20260521150245.xml')
     parsed_data_path = os.path.join('artifacts', 'raw.parquet')
 
 class DataIngestion:
@@ -67,15 +67,16 @@ if __name__ == '__main__':
     transform_obj = DataParsing()
     df_path = transform_obj.initiate_data_parsing(data_path=data_path)
 
-   # engineer_obj = FeatureEngineering()
-   # engineer_obj.initiate_feature_engineering(df_path=df_path)
+    engineer_obj = FeatureEngineering()
+    data_path = engineer_obj.initiate_feature_engineering(df_path=df_path)
 
-   # model_obj = ModelTrainer()
-   # model_path = model_obj.initiate_model_trainer()
+    model_obj = ModelTrainer()
+    models_path = model_obj.initiate_model_trainer(data_path)
 
-    model_path = os.path.join('artifacts', 'model.pkl')
+    #model_path = os.path.join('artifacts', 'model.pkl')
     report_obj = TransactionsReport()
-    report = report_obj.predict_next_month(df_path, model_path)
+    report = report_obj.predict_next_month(df_path, models_path)
     #print(json.dumps(report, indent=2))
-    print(report)
+    total = report['total']
+    print(f"{'total':<20} Ksh {total:>10,.2f}")
 

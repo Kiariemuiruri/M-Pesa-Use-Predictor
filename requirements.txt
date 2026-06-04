@@ -8,4 +8,8 @@ dill
 ipykernel
 setuptools
 pyarrow
+supabase
+python-jose[cryptography]
+python-dotenv
+pydantic[email]
 #-e .

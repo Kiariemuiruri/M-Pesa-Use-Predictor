@@ -1,0 +1,40 @@
+[2026-06-02 17:44:02,977] 28 root - INFO - Entered data ingestion method
+[2026-06-02 17:44:03,146] 50 root - INFO - Data parsing successful
+[2026-06-02 17:44:03,234] 55 root - INFO - Data Ingestion complete!
+[2026-06-02 17:44:03,238] 181 root - INFO - Entered data transformation object
+[2026-06-02 17:44:03,521] 194 root - INFO - Data parsing complete
+[2026-06-02 17:44:03,521] 59 root - INFO - Entered feature engineering object
+[2026-06-02 17:44:03,522] 22 root - INFO - Data pivoting started
+[2026-06-02 17:44:03,569] 51 root - INFO - Data pivoting complete
+[2026-06-02 17:44:03,586] 99 root - INFO - Feature engineerig complete
+[2026-06-02 17:44:03,602] 99 root - INFO - Feature engineerig complete
+[2026-06-02 17:44:03,620] 99 root - INFO - Feature engineerig complete
+[2026-06-02 17:44:03,637] 99 root - INFO - Feature engineerig complete
+[2026-06-02 17:44:03,655] 99 root - INFO - Feature engineerig complete
+[2026-06-02 17:44:03,669] 99 root - INFO - Feature engineerig complete
+[2026-06-02 17:44:03,670] 29 root - INFO - Entered model training object
+[2026-06-02 17:44:03,670] 59 root - INFO - Entered feature engineering object
+[2026-06-02 17:44:03,670] 22 root - INFO - Data pivoting started
+[2026-06-02 17:44:03,695] 51 root - INFO - Data pivoting complete
+[2026-06-02 17:44:03,707] 99 root - INFO - Feature engineerig complete
+[2026-06-02 17:44:03,720] 99 root - INFO - Feature engineerig complete
+[2026-06-02 17:44:03,734] 99 root - INFO - Feature engineerig complete
+[2026-06-02 17:44:03,747] 99 root - INFO - Feature engineerig complete
+[2026-06-02 17:44:03,758] 99 root - INFO - Feature engineerig complete
+[2026-06-02 17:44:03,770] 99 root - INFO - Feature engineerig complete
+[2026-06-02 17:44:03,830] 85 root - INFO - Model saved \u2192 models\model_money_sent.pkl
+[2026-06-02 17:44:03,899] 85 root - INFO - Model saved \u2192 models\model_paybill_payment.pkl
+[2026-06-02 17:44:03,974] 85 root - INFO - Model saved \u2192 models\model_till_payment.pkl
+[2026-06-02 17:44:04,041] 85 root - INFO - Model saved \u2192 models\model_pochi_payment.pkl
+[2026-06-02 17:44:04,118] 85 root - INFO - Model saved \u2192 models\model_airtime.pkl
+[2026-06-02 17:44:04,206] 85 root - INFO - Model saved \u2192 models\model_withdrawal.pkl
+[2026-06-02 17:44:04,209] 59 root - INFO - Entered feature engineering object
+[2026-06-02 17:44:04,209] 22 root - INFO - Data pivoting started
+[2026-06-02 17:44:04,237] 51 root - INFO - Data pivoting complete
+[2026-06-02 17:44:04,250] 99 root - INFO - Feature engineerig complete
+[2026-06-02 17:44:04,263] 99 root - INFO - Feature engineerig complete
+[2026-06-02 17:44:04,274] 99 root - INFO - Feature engineerig complete
+[2026-06-02 17:44:04,286] 99 root - INFO - Feature engineerig complete
+[2026-06-02 17:44:04,297] 99 root - INFO - Feature engineerig complete
+[2026-06-02 17:44:04,308] 99 root - INFO - Feature engineerig complete
+[2026-06-02 17:44:04,505] 170 root - INFO - Predictions complete

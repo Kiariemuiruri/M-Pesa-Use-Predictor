@@ -158,7 +158,7 @@ class TransactionsReport:
                     next_month.hour,
                 ]])
 
-                # ── Load the correct model for this target ────────────
+                # ── Load the correct model for every target ────────────
                 model     = joblib.load(model_paths[target])
                 next_pred = max(model.predict(next_features)[0], 0)
 
