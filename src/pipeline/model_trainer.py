@@ -11,6 +11,7 @@ from src.pipeline.feature_engineering import FeatureEngineering
 from src.logger import logging
 from src.exception import CustomException
 from src.utils import save_object
+from src.core.registry import save_model_to_storage
 
 
 @dataclass 
@@ -72,18 +73,14 @@ class ModelTrainer:
                 train_score  = r2_score(y_train, y_train_pred)
 
                 print(f"{target} — train: {train_score:.3f}  test: {test_score:.3f}")
-                #print(f"  y_test:  {y_test}")
-                #print(f"  y_pred:  {y_pred.round(2)}")
 
-                # ── Save one model file per target ────────────────
-                target_model_path = self.trainer_config.model_path.replace('.pkl', f'_{target}.pkl')
-                    
-                save_object(file_path=target_model_path, obj=model)
-                model_paths[target] = target_model_path
+                # ── Save one model file per target to DB ────────────────
+                #target_model_path = self.trainer_config.model_path.replace('.pkl', f'_{target}.pkl')   
+                #save_object(file_path=target_model_path, obj=model)
+                #model_paths[target] = target_model_path
+                save_model_to_storage(user_id, target, model)
+                logging.info('Models saved to DB')
 
-                logging.info(f'Model saved → {target_model_path}')
-
-            return "XGBoost", model # model_paths   return dict of paths, not just one path
             
         except Exception as e:
             raise CustomException(e, sys)

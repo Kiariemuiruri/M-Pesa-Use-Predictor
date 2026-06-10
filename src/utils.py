@@ -27,7 +27,7 @@ def fetch_user_transactions(user_id: str) -> pd.DataFrame:
         return pd.DataFrame()
     
     df = pd.DataFrame(res.data)
-    df['timestamp'] = pd.to_datetime(df['timestamp'])
+    df['timestamp'] = pd.to_datetime(df['timestamp'], format='mixed', utc=True)
     df['amount'] = df['amount'].astype(float)
     df['balance'] = df['balance'].astype(float)
 

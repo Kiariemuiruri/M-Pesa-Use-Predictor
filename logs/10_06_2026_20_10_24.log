@@ -1,0 +1,10 @@
+[2026-06-10 20:10:59,533] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+[2026-06-10 20:10:59,537] 28 root - INFO - Entered data ingestion method
+[2026-06-10 20:10:59,704] 50 root - INFO - Data parsing successful
+[2026-06-10 20:10:59,789] 55 root - INFO - Data Ingestion complete!
+[2026-06-10 20:10:59,793] 190 root - INFO - Entered data transformation object
+[2026-06-10 20:10:59,971] 202 root - INFO - Data parsing complete
+[2026-06-10 20:11:00,033] 58 root - INFO - Pipeline parsing complete
+[2026-06-10 20:11:03,933] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/rest/v1/transactions?on_conflict=transaction_id&columns=%22transaction_id%22%2C%22number%22%2C%22txn_type%22%2C%22timestamp%22%2C%22amount%22%2C%22body%22%2C%22user_id%22%2C%22name%22%2C%22balance%22 "HTTP/2 200 OK"
+[2026-06-10 20:11:05,050] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/rest/v1/transactions?select=%2A&user_id=eq.ace4781f-5863-41e1-b155-bad0f55b1805 "HTTP/2 200 OK"
+[2026-06-10 20:11:05,465] 11 root - INFO - Error capture successful!

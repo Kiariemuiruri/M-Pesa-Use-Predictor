@@ -16,7 +16,22 @@ def save_model_to_storage(user_id: str, model_name: str, model_obj):
         file_options={"content-type": "application/octet-stream", "upsert":"true"}
     )
 
-def load_from_storage(user_id: str, model_name: str):
-    path = f"{user_id}/{model_name}.joblib"
-    data = supabase.storage.from_(BUCKET).download(path)
-    return joblib.load(io.BytesIO(data))
+def load_from_storage(user_id: str):
+    targets = ['money_sent', 'paybill_payment', 'till_payment',
+               'pochi_payment', "airtime", 'withdrawal']
+
+    models = {}
+    for target in targets:
+        path = f"{user_id}/{target}.joblib"
+        buffer = io.BytesIO()
+        data = supabase.storage.from_(BUCKET).download(path)
+        buffer.write(data)
+        buffer.seek(0)
+        models[target] = joblib.load(buffer)
+        
+    return models
+
+def list_user_models(user_id: str):
+    files = supabase.storage.from_(BUCKET).list(user_id)
+    print(files)
+

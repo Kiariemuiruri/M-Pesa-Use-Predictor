@@ -13,7 +13,7 @@ from src.core.registry import load_from_storage
 @dataclass
 class PredictConfig:
     df = os.path.join('artifacts', 'parsed.parquet')
-    model_path = os.path.join('artifacts', 'model.pkl')
+    trained_model = os.path.join('artifacts', 'model.pkl')
 
 
 class TransactionsReport:
@@ -21,7 +21,7 @@ class TransactionsReport:
         predict_config = PredictConfig()
 
     
-    def generate_report(self, transactions_df):
+    def generate_report(self, user_id, transactions_df):
         logging.info('Initiated report generation')
 
         try:
@@ -131,7 +131,7 @@ class TransactionsReport:
             raise CustomException(e, sys)
         
 
-    def predict_next_month(self, df, model_paths: dict):
+    def predict_next_month(self, user_id, df):
         try:
             feature_engineering = FeatureEngineering()
             dfs = feature_engineering.initiate_feature_engineering(df)
@@ -160,7 +160,9 @@ class TransactionsReport:
                 ]])
 
                 # ── Load the correct model for every target ────────────
-                model     = joblib.load(model_paths[target])
+                #model     = joblib.load(trained_model[target])
+                models = load_from_storage(user_id)
+                model = models[target]
                 next_pred = max(model.predict(next_features)[0], 0)
 
                 print(f"{target:<20} Ksh {next_pred:>10,.2f}")

@@ -1,0 +1,40 @@
+[2026-06-10 22:43:47,016] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+[2026-06-10 22:43:47,021] 28 root - INFO - Entered data ingestion method
+[2026-06-10 22:43:47,191] 50 root - INFO - Data parsing successful
+[2026-06-10 22:43:47,270] 55 root - INFO - Data Ingestion complete!
+[2026-06-10 22:43:47,274] 190 root - INFO - Entered data transformation object
+[2026-06-10 22:43:47,432] 202 root - INFO - Data parsing complete
+[2026-06-10 22:43:47,483] 58 root - INFO - Pipeline parsing complete
+[2026-06-10 22:43:50,540] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/rest/v1/transactions?on_conflict=transaction_id&columns=%22balance%22%2C%22name%22%2C%22transaction_id%22%2C%22txn_type%22%2C%22timestamp%22%2C%22body%22%2C%22number%22%2C%22user_id%22%2C%22amount%22 "HTTP/2 200 OK"
+[2026-06-10 22:43:51,544] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/rest/v1/transactions?select=%2A&user_id=eq.ace4781f-5863-41e1-b155-bad0f55b1805 "HTTP/2 200 OK"
+[2026-06-10 22:43:52,707] 29 root - INFO - Entered model training object
+[2026-06-10 22:43:52,707] 59 root - INFO - Entered feature engineering object
+[2026-06-10 22:43:52,707] 22 root - INFO - Data pivoting started
+[2026-06-10 22:43:52,738] 51 root - INFO - Data pivoting complete
+[2026-06-10 22:43:52,740] 99 root - INFO - Feature engineerig complete
+[2026-06-10 22:43:52,763] 99 root - INFO - Feature engineerig complete
+[2026-06-10 22:43:52,772] 99 root - INFO - Feature engineerig complete
+[2026-06-10 22:43:52,790] 99 root - INFO - Feature engineerig complete
+[2026-06-10 22:43:52,796] 99 root - INFO - Feature engineerig complete
+[2026-06-10 22:43:52,812] 99 root - INFO - Feature engineerig complete
+[2026-06-10 22:43:52,875] 84 root - INFO - Model saved \u2192 models\model_money_sent.pkl
+[2026-06-10 22:43:52,989] 84 root - INFO - Model saved \u2192 models\model_paybill_payment.pkl
+[2026-06-10 22:43:53,101] 84 root - INFO - Model saved \u2192 models\model_till_payment.pkl
+[2026-06-10 22:43:53,209] 84 root - INFO - Model saved \u2192 models\model_pochi_payment.pkl
+[2026-06-10 22:43:53,300] 84 root - INFO - Model saved \u2192 models\model_airtime.pkl
+[2026-06-10 22:43:53,365] 84 root - INFO - Model saved \u2192 models\model_withdrawal.pkl
+[2026-06-10 22:43:54,694] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/XGBoost.joblib "HTTP/2 200 OK"
+[2026-06-10 22:43:55,470] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/XGBoost.joblib "HTTP/2 200 OK"
+[2026-06-10 22:43:55,807] 25 root - INFO - Initiated report generation
+[2026-06-10 22:43:55,821] 62 root - INFO - Report successfully generated
+[2026-06-10 22:43:55,847] 59 root - INFO - Entered feature engineering object
+[2026-06-10 22:43:55,847] 22 root - INFO - Data pivoting started
+[2026-06-10 22:43:55,861] 51 root - INFO - Data pivoting complete
+[2026-06-10 22:43:55,873] 99 root - INFO - Feature engineerig complete
+[2026-06-10 22:43:55,884] 99 root - INFO - Feature engineerig complete
+[2026-06-10 22:43:55,898] 99 root - INFO - Feature engineerig complete
+[2026-06-10 22:43:55,914] 99 root - INFO - Feature engineerig complete
+[2026-06-10 22:43:55,930] 99 root - INFO - Feature engineerig complete
+[2026-06-10 22:43:55,930] 99 root - INFO - Feature engineerig complete
+[2026-06-10 22:43:55,946] 11 root - INFO - Error capture successful!
+[2026-06-10 22:43:55,946] 11 root - INFO - Error capture successful!

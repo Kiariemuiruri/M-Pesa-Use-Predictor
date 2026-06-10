@@ -18,11 +18,11 @@ class FeatureEngineering:
         self.engineering_config = FeatureEngineeringConfig()
 
     # start by pivoting the features to be engineered
-    def prepare_data(self, df_path):
+    def prepare_data(self, df):
         logging.info('Data pivoting started')
 
         try:
-            df = pd.read_parquet(df_path, engine='pyarrow')
+            #df = pd.read_parquet(df_path, engine='pyarrow')
             
             outflows = df[df['txn_type'].isin(['sent', 'paybill', 'till', 'pochi', 'airtime',
                                             'withdrawal'])].copy()
@@ -55,13 +55,13 @@ class FeatureEngineering:
         except Exception as e:
             raise CustomException(e, sys)
         
-    def initiate_feature_engineering(self, df_path):
+    def initiate_feature_engineering(self, df):
         logging.info('Entered feature engineering object')
 
         try:
             target_dfs = {}
 
-            spending_df = self.prepare_data(df_path=df_path)
+            spending_df = self.prepare_data(df=df)
             # print(spending_df.columns)
             targets = ['money_sent', 'paybill_payment', 'till_payment', 
                     'pochi_payment', 'airtime', 'withdrawal']

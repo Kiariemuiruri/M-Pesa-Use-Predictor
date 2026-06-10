@@ -1,0 +1,81 @@
+[2026-06-10 23:51:30,233] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+[2026-06-10 23:51:30,238] 28 root - INFO - Entered data ingestion method
+[2026-06-10 23:51:30,420] 50 root - INFO - Data parsing successful
+[2026-06-10 23:51:30,492] 55 root - INFO - Data Ingestion complete!
+[2026-06-10 23:51:30,497] 190 root - INFO - Entered data transformation object
+[2026-06-10 23:51:30,676] 202 root - INFO - Data parsing complete
+[2026-06-10 23:51:30,735] 72 root - INFO - Pipeline parsing complete
+[2026-06-10 23:51:33,224] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/rest/v1/transactions?on_conflict=transaction_id&columns=%22transaction_id%22%2C%22name%22%2C%22timestamp%22%2C%22txn_type%22%2C%22balance%22%2C%22user_id%22%2C%22amount%22%2C%22number%22%2C%22body%22 "HTTP/2 200 OK"
+[2026-06-10 23:51:33,985] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/rest/v1/transactions?select=%2A&user_id=eq.ace4781f-5863-41e1-b155-bad0f55b1805 "HTTP/2 200 OK"
+[2026-06-10 23:51:34,363] 30 root - INFO - Entered model training object
+[2026-06-10 23:51:34,364] 59 root - INFO - Entered feature engineering object
+[2026-06-10 23:51:34,364] 22 root - INFO - Data pivoting started
+[2026-06-10 23:51:34,386] 51 root - INFO - Data pivoting complete
+[2026-06-10 23:51:34,399] 99 root - INFO - Feature engineerig complete
+[2026-06-10 23:51:34,411] 99 root - INFO - Feature engineerig complete
+[2026-06-10 23:51:34,424] 99 root - INFO - Feature engineerig complete
+[2026-06-10 23:51:34,435] 99 root - INFO - Feature engineerig complete
+[2026-06-10 23:51:34,449] 99 root - INFO - Feature engineerig complete
+[2026-06-10 23:51:34,462] 99 root - INFO - Feature engineerig complete
+[2026-06-10 23:51:35,901] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/money_sent.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:36,170] 82 root - INFO - Models saved to DB
+[2026-06-10 23:51:37,034] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/paybill_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:37,037] 82 root - INFO - Models saved to DB
+[2026-06-10 23:51:38,231] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/till_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:38,233] 82 root - INFO - Models saved to DB
+[2026-06-10 23:51:39,612] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/pochi_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:39,614] 82 root - INFO - Models saved to DB
+[2026-06-10 23:51:40,560] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/airtime.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:40,719] 82 root - INFO - Models saved to DB
+[2026-06-10 23:51:41,808] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/withdrawal.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:41,809] 82 root - INFO - Models saved to DB
+[2026-06-10 23:51:41,811] 25 root - INFO - Initiated report generation
+[2026-06-10 23:51:41,825] 62 root - INFO - Report successfully generated
+[2026-06-10 23:51:41,857] 59 root - INFO - Entered feature engineering object
+[2026-06-10 23:51:41,858] 22 root - INFO - Data pivoting started
+[2026-06-10 23:51:41,876] 51 root - INFO - Data pivoting complete
+[2026-06-10 23:51:41,892] 99 root - INFO - Feature engineerig complete
+[2026-06-10 23:51:41,908] 99 root - INFO - Feature engineerig complete
+[2026-06-10 23:51:41,925] 99 root - INFO - Feature engineerig complete
+[2026-06-10 23:51:41,941] 99 root - INFO - Feature engineerig complete
+[2026-06-10 23:51:41,958] 99 root - INFO - Feature engineerig complete
+[2026-06-10 23:51:41,974] 99 root - INFO - Feature engineerig complete
+[2026-06-10 23:51:42,785] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/money_sent.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:43,796] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/paybill_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:44,634] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/till_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:45,959] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/pochi_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:47,020] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/airtime.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:48,270] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/withdrawal.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:48,770] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/money_sent.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:49,406] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/paybill_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:49,811] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/till_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:50,349] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/pochi_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:50,732] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/airtime.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:51,274] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/withdrawal.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:51,836] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/money_sent.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:52,339] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/paybill_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:53,178] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/till_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:53,711] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/pochi_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:54,207] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/airtime.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:54,621] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/withdrawal.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:55,140] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/money_sent.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:56,009] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/paybill_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:56,413] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/till_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:56,791] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/pochi_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:57,208] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/airtime.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:57,590] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/withdrawal.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:58,454] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/money_sent.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:58,789] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/paybill_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:59,228] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/till_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:51:59,565] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/pochi_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:52:00,010] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/airtime.joblib "HTTP/2 200 OK"
+[2026-06-10 23:52:00,546] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/withdrawal.joblib "HTTP/2 200 OK"
+[2026-06-10 23:52:01,195] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/money_sent.joblib "HTTP/2 200 OK"
+[2026-06-10 23:52:01,510] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/paybill_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:52:01,947] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/till_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:52:02,304] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/pochi_payment.joblib "HTTP/2 200 OK"
+[2026-06-10 23:52:02,655] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/airtime.joblib "HTTP/2 200 OK"
+[2026-06-10 23:52:03,026] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/storage/v1/object/models/ace4781f-5863-41e1-b155-bad0f55b1805/withdrawal.joblib "HTTP/2 200 OK"
+[2026-06-10 23:52:03,159] 173 root - INFO - Predictions complete
+[2026-06-10 23:52:03,500] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/rest/v1/reports?on_conflict=user_id "HTTP/2 400 Bad Request"
+[2026-06-10 23:52:03,503] 11 root - INFO - Error capture successful!
