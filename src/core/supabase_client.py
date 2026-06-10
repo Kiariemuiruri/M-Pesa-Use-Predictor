@@ -7,5 +7,7 @@ load_dotenv()
 
 supabase: Client = create_client(
     os.environ["SUPABASE_URL"],
-    os.environ["SUPABASE_SERVICE_KEY"]
+    os.environ["SUPABASE_ANON_KEY"]
 )
+
+supabase_admin = create_client(os.environ["SUPABASE_URL"], os.environ["SUPABASE_SERVICE_KEY"])

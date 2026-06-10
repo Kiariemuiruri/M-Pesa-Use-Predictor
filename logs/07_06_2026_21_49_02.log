@@ -1,0 +1,13 @@
+[2026-06-09 14:01:37,186] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/auth/v1/signup "HTTP/2 200 OK"
+[2026-06-09 14:02:09,856] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/auth/v1/token?grant_type=password "HTTP/2 400 Bad Request"
+[2026-06-09 14:05:10,680] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/auth/v1/token?grant_type=password "HTTP/2 400 Bad Request"
+[2026-06-09 14:06:42,330] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/auth/v1/signup "HTTP/2 200 OK"
+[2026-06-09 14:07:52,066] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/auth/v1/token?grant_type=password "HTTP/2 400 Bad Request"
+[2026-06-09 14:19:33,715] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/auth/v1/token?grant_type=password "HTTP/2 200 OK"
+[2026-06-09 14:21:08,967] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+[2026-06-09 14:21:08,972] 28 root - INFO - Entered data ingestion method
+[2026-06-09 14:21:09,261] 50 root - INFO - Data parsing successful
+[2026-06-09 14:21:09,453] 55 root - INFO - Data Ingestion complete!
+[2026-06-09 14:21:09,456] 181 root - INFO - Entered data transformation object
+[2026-06-09 14:21:09,650] 194 root - INFO - Data parsing complete
+[2026-06-09 14:21:09,676] 36 root - INFO - Pipeline parsing complete

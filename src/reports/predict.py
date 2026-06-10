@@ -7,11 +7,12 @@ from dataclasses import dataclass
 from src.logger import logging
 from src.exception import CustomException
 from src.pipeline.feature_engineering import FeatureEngineering
+from src.core.registry import load_from_storage
 
 
 @dataclass
 class PredictConfig:
-    data_path = os.path.join('artifacts', 'parsed.parquet')
+    df = os.path.join('artifacts', 'parsed.parquet')
     model_path = os.path.join('artifacts', 'model.pkl')
 
 
@@ -20,12 +21,12 @@ class TransactionsReport:
         predict_config = PredictConfig()
 
     
-    def generate_report(self, data_path):
+    def generate_report(self, transactions_df):
         logging.info('Initiated report generation')
 
         try:
              
-            transactions_df = pd.read_parquet(data_path)
+            #transactions_df = pd.read_parquet(df)
 
             received = transactions_df[transactions_df['txn_type'] == 'received']
             sent = transactions_df[transactions_df['txn_type'] == 'sent']
@@ -117,9 +118,9 @@ class TransactionsReport:
     
     def _fmt(v): return f"Ksh {v:,.2f}"
 
-    def generate_transaction_times(self, data_path):
+    def generate_transaction_times(self, user_id, df):
         try:
-            transactions_df = pd.read_parquet(data_path)
+            transactions_df = pd.read_parquet(df)
             transactions_times = {}
             transactions_times = transactions_df['txn_type'].value_counts()
             logging.info('number of transactions successful')
@@ -130,10 +131,10 @@ class TransactionsReport:
             raise CustomException(e, sys)
         
 
-    def predict_next_month(self, data_path, model_paths: dict):
+    def predict_next_month(self, df, model_paths: dict):
         try:
             feature_engineering = FeatureEngineering()
-            dfs = feature_engineering.initiate_feature_engineering(data_path)
+            dfs = feature_engineering.initiate_feature_engineering(df)
 
             predictions = {}
             total       = 0

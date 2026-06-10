@@ -1,0 +1,4 @@
+[2026-06-05 16:50:32,509] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/auth/v1/user "HTTP/1.1 401 Unauthorized"
+[2026-06-05 16:50:58,386] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/auth/v1/token?grant_type=password "HTTP/2 200 OK"
+[2026-06-05 16:51:42,912] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/auth/v1/user "HTTP/1.1 401 Unauthorized"
+[2026-06-05 16:55:00,708] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/auth/v1/user "HTTP/1.1 401 Unauthorized"

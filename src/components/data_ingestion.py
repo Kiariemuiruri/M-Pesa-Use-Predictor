@@ -50,11 +50,11 @@ class DataIngestion:
             logging.info('Data parsing successful')
 
             os.makedirs(os.path.dirname(self.ingestion_config.parsed_data_path), exist_ok=True)
-            df.to_parquet(self.ingestion_config.parsed_data_path, index=False, engine='pyarrow')
-            
+            #df.to_parquet(self.ingestion_config.parsed_data_path, index=False, engine='pyarrow')
+            df.to_parquet()
             logging.info('Data Ingestion complete!')
 
-            return self.ingestion_config.parsed_data_path
+            return  df # self.ingestion_config.parsed_data_path
         
         except Exception as e:
             raise CustomException(e, sys)

@@ -1,0 +1,66 @@
+[2026-06-09 14:41:07,144] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/auth/v1/token?grant_type=password "HTTP/2 400 Bad Request"
+[2026-06-09 14:41:25,471] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/auth/v1/token?grant_type=password "HTTP/2 200 OK"
+[2026-06-09 14:42:04,997] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+[2026-06-09 14:42:05,004] 28 root - INFO - Entered data ingestion method
+[2026-06-09 14:42:05,300] 50 root - INFO - Data parsing successful
+[2026-06-09 14:42:05,387] 55 root - INFO - Data Ingestion complete!
+[2026-06-09 14:42:05,392] 181 root - INFO - Entered data transformation object
+[2026-06-09 14:42:05,558] 194 root - INFO - Data parsing complete
+[2026-06-09 14:42:05,603] 53 root - INFO - Pipeline parsing complete
+[2026-06-09 14:42:06,738] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/rest/v1/transactions?on_conflict=transaction_id&columns=%22number%22%2C%22txn_type%22%2C%22user_id%22%2C%22balance%22%2C%22amount%22%2C%22name%22%2C%22body%22%2C%22timestamp%22 "HTTP/2 400 Bad Request"
+[2026-06-09 14:43:30,301] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+[2026-06-09 14:43:30,340] 28 root - INFO - Entered data ingestion method
+[2026-06-09 14:43:30,597] 50 root - INFO - Data parsing successful
+[2026-06-09 14:43:30,606] 55 root - INFO - Data Ingestion complete!
+[2026-06-09 14:43:30,606] 181 root - INFO - Entered data transformation object
+[2026-06-09 14:43:30,771] 194 root - INFO - Data parsing complete
+[2026-06-09 14:43:31,014] 53 root - INFO - Pipeline parsing complete
+[2026-06-09 14:43:32,141] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/rest/v1/transactions?on_conflict=transaction_id&columns=%22number%22%2C%22txn_type%22%2C%22user_id%22%2C%22balance%22%2C%22amount%22%2C%22name%22%2C%22body%22%2C%22timestamp%22 "HTTP/2 400 Bad Request"
+[2026-06-09 14:44:41,056] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+[2026-06-09 14:44:41,059] 28 root - INFO - Entered data ingestion method
+[2026-06-09 14:44:41,331] 50 root - INFO - Data parsing successful
+[2026-06-09 14:44:41,342] 55 root - INFO - Data Ingestion complete!
+[2026-06-09 14:44:41,348] 181 root - INFO - Entered data transformation object
+[2026-06-09 14:44:41,509] 194 root - INFO - Data parsing complete
+[2026-06-09 14:44:41,549] 53 root - INFO - Pipeline parsing complete
+[2026-06-09 14:44:42,592] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/rest/v1/transactions?on_conflict=transaction_id&columns=%22number%22%2C%22txn_type%22%2C%22user_id%22%2C%22balance%22%2C%22amount%22%2C%22name%22%2C%22body%22%2C%22timestamp%22 "HTTP/2 400 Bad Request"
+[2026-06-09 14:45:42,087] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+[2026-06-09 14:45:42,090] 28 root - INFO - Entered data ingestion method
+[2026-06-09 14:45:42,262] 50 root - INFO - Data parsing successful
+[2026-06-09 14:45:42,274] 55 root - INFO - Data Ingestion complete!
+[2026-06-09 14:45:42,278] 181 root - INFO - Entered data transformation object
+[2026-06-09 14:45:42,461] 194 root - INFO - Data parsing complete
+[2026-06-09 14:45:42,510] 53 root - INFO - Pipeline parsing complete
+[2026-06-09 14:45:43,630] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/rest/v1/transactions?on_conflict=transaction_id&columns=%22number%22%2C%22txn_type%22%2C%22user_id%22%2C%22balance%22%2C%22amount%22%2C%22name%22%2C%22body%22%2C%22timestamp%22 "HTTP/2 400 Bad Request"
+[2026-06-09 14:46:19,872] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+[2026-06-09 14:46:19,879] 28 root - INFO - Entered data ingestion method
+[2026-06-09 14:46:20,093] 50 root - INFO - Data parsing successful
+[2026-06-09 14:46:20,107] 55 root - INFO - Data Ingestion complete!
+[2026-06-09 14:46:20,112] 181 root - INFO - Entered data transformation object
+[2026-06-09 14:46:20,269] 194 root - INFO - Data parsing complete
+[2026-06-09 14:46:20,310] 53 root - INFO - Pipeline parsing complete
+[2026-06-09 14:46:21,409] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/rest/v1/transactions?on_conflict=transaction_id&columns=%22number%22%2C%22txn_type%22%2C%22user_id%22%2C%22balance%22%2C%22amount%22%2C%22name%22%2C%22body%22%2C%22timestamp%22 "HTTP/2 400 Bad Request"
+[2026-06-09 14:53:07,327] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+[2026-06-09 14:53:07,331] 28 root - INFO - Entered data ingestion method
+[2026-06-09 14:53:07,507] 50 root - INFO - Data parsing successful
+[2026-06-09 14:53:07,521] 55 root - INFO - Data Ingestion complete!
+[2026-06-09 14:53:07,533] 181 root - INFO - Entered data transformation object
+[2026-06-09 14:53:07,717] 194 root - INFO - Data parsing complete
+[2026-06-09 14:53:07,771] 53 root - INFO - Pipeline parsing complete
+[2026-06-09 14:53:09,067] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/rest/v1/transactions?on_conflict=transaction_id&columns=%22number%22%2C%22txn_type%22%2C%22user_id%22%2C%22balance%22%2C%22amount%22%2C%22name%22%2C%22body%22%2C%22timestamp%22 "HTTP/2 400 Bad Request"
+[2026-06-09 14:54:47,967] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+[2026-06-09 14:54:47,970] 28 root - INFO - Entered data ingestion method
+[2026-06-09 14:54:48,147] 50 root - INFO - Data parsing successful
+[2026-06-09 14:54:48,159] 55 root - INFO - Data Ingestion complete!
+[2026-06-09 14:54:48,170] 181 root - INFO - Entered data transformation object
+[2026-06-09 14:54:48,416] 194 root - INFO - Data parsing complete
+[2026-06-09 14:54:48,458] 53 root - INFO - Pipeline parsing complete
+[2026-06-09 14:54:49,522] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/rest/v1/transactions?on_conflict=transaction_id&columns=%22number%22%2C%22txn_type%22%2C%22user_id%22%2C%22balance%22%2C%22amount%22%2C%22name%22%2C%22body%22%2C%22timestamp%22 "HTTP/2 400 Bad Request"
+[2026-06-09 14:55:20,541] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+[2026-06-09 14:55:20,541] 28 root - INFO - Entered data ingestion method
+[2026-06-09 14:55:20,812] 50 root - INFO - Data parsing successful
+[2026-06-09 14:55:20,832] 55 root - INFO - Data Ingestion complete!
+[2026-06-09 14:55:20,835] 181 root - INFO - Entered data transformation object
+[2026-06-09 14:55:20,998] 194 root - INFO - Data parsing complete
+[2026-06-09 14:55:21,045] 53 root - INFO - Pipeline parsing complete
+[2026-06-09 14:55:22,125] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/rest/v1/transactions?on_conflict=transaction_id&columns=%22number%22%2C%22txn_type%22%2C%22user_id%22%2C%22balance%22%2C%22amount%22%2C%22name%22%2C%22body%22%2C%22timestamp%22 "HTTP/2 400 Bad Request"

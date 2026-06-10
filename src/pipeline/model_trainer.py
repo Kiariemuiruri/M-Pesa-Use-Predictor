@@ -25,15 +25,14 @@ class ModelTrainer:
         self.feature_engineering = FeatureEngineering()
 
     
-    def initiate_model_trainer(self,data_path):
+    def initiate_model_trainer(self, user_id,df):
         logging.info('Entered model training object')
 
         try:
             targets = ['money_sent', 'paybill_payment', 'till_payment',
                     'pochi_payment', 'airtime', 'withdrawal']
 
-            target_dfs = self.feature_engineering.initiate_feature_engineering(
-                df_path=self.trainer_config.engineered_features)
+            target_dfs = self.feature_engineering.initiate_feature_engineering(df=df)
             
 
             model_paths = {}  # store one path per target
@@ -84,7 +83,7 @@ class ModelTrainer:
 
                 logging.info(f'Model saved → {target_model_path}')
 
-            return model_paths  # return dict of paths, not just one path
+            return "XGBoost", model # model_paths   return dict of paths, not just one path
             
         except Exception as e:
             raise CustomException(e, sys)

@@ -1,0 +1,3 @@
+[2026-06-05 16:31:16,919] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/auth/v1/signup "HTTP/2 200 OK"
+[2026-06-05 16:32:17,640] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/auth/v1/token?grant_type=password "HTTP/2 400 Bad Request"
+[2026-06-05 16:33:14,473] 1025 httpx - INFO - HTTP Request: POST https://raymaznrtwdqqazipgat.supabase.co/auth/v1/token?grant_type=password "HTTP/2 200 OK"

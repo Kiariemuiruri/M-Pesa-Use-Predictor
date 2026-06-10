@@ -109,9 +109,16 @@ class DataParsing:
                     r'Withdraw Ksh\s*([\d,]+\.?\d*)\s+from',
                     re.IGNORECASE
                 ),
+
+                # transaction id
+                'transaction_id': re.compile(
+                    r'\b([A-Z]{2,3}[0-9A-Z]{7,10})\b',
+                    re.IGNORECASE
+                )
             }
     
             result = {
+                'transaction_id': None,
                 'txn_type': None,
                 'amount': None,
                 'number': None, 
@@ -170,6 +177,8 @@ class DataParsing:
                     result['amount'] = float(g[0].rstrip('.').replace(',', ''))
 
                 break # stop at first match
+            tid = patterns['transaction_id'].search(body)
+            result['transaction_id'] = tid.group(1) if tid else None
             
             #logging.info('Data transformation complete')
             return result
@@ -177,23 +186,22 @@ class DataParsing:
         except Exception as e:
             raise CustomException(e, sys)
         
-    def initiate_data_parsing(self, data_path):
+    def initiate_data_parsing(self, data):
         logging.info('Entered data transformation object')
 
         try:
-            data = pd.read_parquet(data_path, engine='pyarrow')
+            #data = pd.read_parquet(data_path, engine='pyarrow')
             extracted = data['body'].apply(self.extract)
             df = data.join(pd.DataFrame(extracted.tolist()))
             df = df.dropna(subset=['txn_type'])
             #print(f"time {df['timestamp'].dtype}")
             os.makedirs(os.path.dirname(self.transformation_config.data_path), exist_ok=True)
-            df.to_parquet(self.transformation_config.data_path, index=False, engine='pyarrow')
-
+            #df.to_parquet(self.transformation_config.data_path, index=False, engine='pyarrow')
             print(f" ✔️  Extracted {len(df)} transactions")  
             #print(df['txn_type'].value_counts())
             logging.info('Data parsing complete')
 
-            return self.transformation_config.data_path   
+            return df # self.transformation_config.data_path   
 
         except Exception as e:
             raise CustomException(e, sys)

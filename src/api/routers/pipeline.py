@@ -1,13 +1,18 @@
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 from datetime import datetime
+import pandas as pd
+from datetime import datetime
+import math
 from src.core.auth import get_current_user
-from src.core.supabase_client import supabase
+from src.core.supabase_client import supabase_admin
 from src.components.data_parsing import DataParsing          # your existing parser
 from src.pipeline.model_trainer import ModelTrainer
 from src.components.data_ingestion import DataIngestion
 from src.reports.predict import TransactionsReport
-from src.core.registry import save_model_to_storage
+from src.logger import logging
+from src.core.registry import save_model_to_storage, load_from_storage
+from src.utils import fetch_user_transactions
 import json
 
 
@@ -16,43 +21,73 @@ router = APIRouter(prefix='/pipeline', tags=['pipeline'])
 class SMSUpload(BaseModel):
     messages: list[str]
 
-
+def serialize_record(records: dict) -> dict:
+    """Convert pandas/numpy types to plain Python types for JSON serialization."""
+    cleaned = {}
+    for k, v in records.items():
+        if isinstance(v, pd.Timestamp):
+            cleaned[k] = v.isoformat()
+        elif isinstance(v, float) and math.isnan(v):
+            cleaned[k] = None
+        elif hasattr(v, 'item'):
+            cleaned[k] = v.item()
+        else:
+            cleaned[k] = v
+    return cleaned
+    
 @router.post('/upload')
 def upload_and_train(body: SMSUpload, user: dict = Depends(get_current_user)):
-    user_id = user['sub']
+    user_id = user['id']
 
     # extract M-pesa SMSes
     ingestion = DataIngestion()
-    df = ingestion.initiate_data_ingestion(body.messages)
+    df = ingestion.initiate_data_ingestion()
 
     # parse sms into Transactions
     parsing = DataParsing()
     parsed_df = parsing.initiate_data_parsing(df)
     
     records = parsed_df.to_dict(orient='records')
-    if records.empty:
-        raise HTTPException(400, "No valid M-pesa transactions found")
-    
+    records = [serialize_record(r) for r in records]
+    print(json.dumps(records[0], indent=2, default=str))
+    #if records.empty:
+     #   raise HTTPException(400, "No valid M-pesa transactions found")
+    logging.info("Pipeline parsing complete")
+    print(records[0].keys())
+    seen = set()
+    unique_records = []
     for r in records:
         r['user_id'] = user_id
+        tid = r.get('transaction_id')
+        if tid and tid not in seen:
+            seen.add(tid)
+            unique_records.append(r)
+        elif not tid:
+            unique_records.append(r)
 
-    supabase.table('transactions').upsert(records, on_conflict="transaction_id").execute()
+    supabase_admin.table('transactions').upsert(unique_records, on_conflict="transaction_id").execute()
+
+    # fetch the transactions from DB for training and report generation
+    df = fetch_user_transactions(user_id=user_id)
 
     # train models on users data
     trainer = ModelTrainer()
-    models = trainer.initiate_model_trainer(user_id, parsed_df)
+    model_name, model = trainer.initiate_model_trainer(df=df, user_id=user_id)
 
     # save .joblib files to supabase storage
-    for model_name, model_obj in models.items():
-        save_model_to_storage(user_id, model_name, model_obj)
+    
+    save_model_to_storage(user_id, model_name, model)
+
+    # load model from DB
+    trained_model = load_from_storage(user_id, model_name)
 
     # generate report and predictions
     transactions_report = TransactionsReport()
-    report = transactions_report.generate_report(user_id, parsed_df)
-    prediction = transactions_report.predict_next_month(user_id, parsed_df)
+    report = transactions_report.generate_report(user_id, df)
+    prediction = transactions_report.predict_next_month(user_id, df=df, model_paths=trained_model)
 
     # save model + metadata to DB
-    supabase.table('reports').upsert({
+    supabase_admin.table('reports').upsert({
         'user_id': user_id,
         'report': report,
         'prediction': prediction,

@@ -1,0 +1,6 @@
+[2026-06-09 15:27:35,942] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+[2026-06-09 15:27:35,942] 28 root - INFO - Entered data ingestion method
+[2026-06-09 15:27:36,021] 50 root - INFO - Data parsing successful
+[2026-06-09 15:27:36,066] 55 root - INFO - Data Ingestion complete!
+[2026-06-09 15:27:36,068] 189 root - INFO - Entered data transformation object
+[2026-06-09 15:27:36,142] 11 root - INFO - Error capture successful!
