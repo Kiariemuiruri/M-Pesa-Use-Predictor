@@ -24,6 +24,3 @@ def debug_auth(creds: HTTPAuthorizationCredentials = Depends(HTTPBearer())):
 app.include_router(auth.router)
 app.include_router(pipeline.router)
 app.include_router(insights.router)
-
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True, port=8080)
