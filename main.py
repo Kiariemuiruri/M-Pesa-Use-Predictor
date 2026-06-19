@@ -5,6 +5,10 @@ import uvicorn
 
 app = FastAPI(title='M-pesa Analyser')
 
+@app.get("/")
+def read_route():
+    return {"message": "Endpoint Health okay ✔️"}
+
 @app.get("/debug/auth")
 def debug_auth(creds: HTTPAuthorizationCredentials = Depends(HTTPBearer())):
     import httpx, os
@@ -21,3 +25,5 @@ app.include_router(auth.router)
 app.include_router(pipeline.router)
 app.include_router(insights.router)
 
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', debug=True, port=8080)
