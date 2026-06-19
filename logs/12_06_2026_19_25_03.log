@@ -1,0 +1,3 @@
+[2026-06-12 19:25:12,084] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+[2026-06-12 19:25:12,763] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/rest/v1/reports?select=report%2Cpredictions%2Cgenerated_at&user_id=eq.ace4781f-5863-41e1-b155-bad0f55b1805 "HTTP/2 406 Not Acceptable"
+[2026-06-12 19:25:12,765] 11 root - INFO - Error capture successful!

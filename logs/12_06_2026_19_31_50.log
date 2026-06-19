@@ -1,0 +1,2 @@
+[2026-06-12 19:32:00,365] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/auth/v1/user "HTTP/1.1 200 OK"
+[2026-06-12 19:32:02,352] 1025 httpx - INFO - HTTP Request: GET https://raymaznrtwdqqazipgat.supabase.co/rest/v1/reports?select=report%2Cpredictions%2Cgenerated_at&user_id=eq.ace4781f-5863-41e1-b155-bad0f55b1805 "HTTP/2 200 OK"
